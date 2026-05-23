@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-content">
+            <h2 class="logo">📱 QR Scanner</h2>
+            <div class="nav-buttons">
+                <a href="viewer.html" class="nav-btn">Database</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Smart QR Code Scanner</h1>
+                <p>Scan QR codes instantly with your camera and store data securely</p>
+                <button id="scanBtn" class="btn-scan">
+                    <span>📷 Open Scanner</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Scanner Modal -->
+        <div id="scannerModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>QR Code Scanner</h2>
+                    <button id="closeModal" class="close-btn">&times;</button>
+                </div>
+                
+                <div class="scanner-section">
+                    <div class="camera-container">
+                        <video id="video" autoplay playsinline></video>
+                        <canvas id="canvas" style="display: none;"></canvas>
+                        <div id="scanner-overlay">
+                            <div class="scanner-box"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="scanner-controls">
+                        <button id="startBtn" class="btn btn-primary">Start Camera</button>
+                        <button id="stopBtn" class="btn btn-secondary" disabled>Stop Camera</button>
+                    </div>
+                </div>
+
+                <div id="result" class="result-box hidden">
+                    <h3>✓ Scan Successful!</h3>
+                    <p><strong>Data:</strong> <span id="resultData"></span></p>
+                    <p><strong>Time:</strong> <span id="resultTime"></span></p>
+                    <button id="copyBtn" class="btn btn-small">📋 Copy Data</button>
+                </div>
+
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Scanning...</p>
+                </div>
+
+                <div id="error" class="error hidden">
+                    <p id="errorMessage"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2>Why Choose Our Scanner?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Scanning</h3>
+                    <p>Real-time QR code detection powered by advanced AI</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Storage</h3>
+                    <p>All data is stored locally on your device</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>History Tracking</h3>
+                    <p>View all your scans with timestamps</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Ready</h3>
+                    <p>Works seamlessly on any device</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Scans Section -->
+        <section class="recent-scans">
+            <h2>Recent Scans</h2>
+            <div id="recentList" class="recent-list"></div>
+        </section>
+    </div>
+
+    <!-- QR Code Scanner Library -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
